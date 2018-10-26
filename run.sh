@@ -5,13 +5,13 @@ echo "Creating Docker network"
 docker network create mpi-net
 
 echo "Starting master"
-docker run -d --rm --hostname=mpi-master --name=mpi-master --network=mpi-net mpiproject
+docker run -d --rm --hostname=mpi-master --memory=1g --name=mpi-master --network=mpi-net mpiproject
 
 echo "Starting $NODES nodes"
 i=0
 hosts=
 while [ $i -lt $NODES ]; do
-    docker run -d --rm --hostname="mpi-node$i" --name="mpi-node$i" --network=mpi-net mpiproject
+    docker run -d --rm --hostname="mpi-node$i" --memory=1g --name="mpi-node$i" --network=mpi-net mpiproject
     hosts=$hosts,mpi-node$i
     ((i++))
 done
