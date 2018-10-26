@@ -25,7 +25,7 @@ done
 
 echo "Executing mpirun on the master"
 echo "--------------------------------------------------------------"
-docker exec mpi-master mpirun --allow-run-as-root --prefix /usr/lib64/openmpi -np $NODES --host $hosts /root/a.out
+docker exec mpi-master mpirun --allow-run-as-root --prefix /usr/lib64/openmpi --host $hosts /root/a.out
 echo "--------------------------------------------------------------"
 
 echo "Stopping master"
