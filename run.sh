@@ -9,7 +9,7 @@ docker run -d --rm --hostname=mpi-master --memory=1g --name=mpi-master --network
 
 echo "Starting $NODES nodes"
 i=0
-hosts=
+hosts=mpi-master
 while [ $i -lt $NODES ]; do
     docker run -d --rm --hostname="mpi-node$i" --memory=1g --name="mpi-node$i" --network=mpi-net mpiproject
     hosts=$hosts,mpi-node$i
